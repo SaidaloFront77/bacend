@@ -1,18 +1,12 @@
 const { Pool } = require('pg');
 require('dotenv').config();
+
+
 const pool = new Pool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
+    connectionString: `postgresql://saidalo:qtK5eea1arM8fUlqScWUTmsquV8yQiHn@dpg-d0th6gs9c44c739g3c50-a.oregon-postgres.render.com/user_manage_qn7k`,
     ssl: {
-    rejectUnauthorized: false
-    }
-    });
+        rejectUnauthorized: false,
+    },
+});
 
-    pool.connect()
-    .then(() =>console.log('postgress bazasga uland'))
-    .catch((err) => console.error('ulanishda hatolik', err))
-
-    module.exports = pool;
+module.exports = pool;
