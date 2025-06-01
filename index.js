@@ -1,19 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-const { Pool } = require('pg');
+require('dotenv').config();
+const pool = require('./db')
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // Postgres pool yaratamiz
-const pool = new Pool({
-  user: 'postgres',        // o‘zingizning postgres username
-  host: 'localhost',
-  database: 'user-management',
-  password: '1234',  // postgres parolingiz
-  port: 5432,
-});
+
 
 // Foydalanuvchi qo'shish
 app.post('/users', async (req, res) => {
